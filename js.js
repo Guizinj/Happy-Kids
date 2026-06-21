@@ -1,7 +1,13 @@
 const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 'sb_publishable_vgMlqThxJJUydyn1wDQiMA_mF4VqYp8');
 
-        async function buscarProdutos(){
-            const {data, error} = await banco.from('produtos').select('*');
+        async function buscarProdutos(categoria){
+
+            let validacao = banco.from('produtos').select('*');
+            if(categoria){
+                validacao = validacao.eq('categoria', categoria);
+            }
+
+            const {data, error} = await validacao;
             
             if(error){
                 console.error('deu erro', error);
@@ -14,39 +20,19 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
         buscarProdutos();
 
         function renderizar (lista){
-            const container = document.getElementById('container-produtos');
+            const container = document.getElementById('grid');
             container.innerHTML = ''
 
             lista.forEach(p => {
                 const card = document.createElement('div');
                 card.classList.add('card');
-
-                if (p.estoque === 0) {
                     card.innerHTML = `
-                        <h2>${p.nome}</h2>
-                        <p>Preço: R$ ${p.preco.toFixed(2)}</p>
-                        <span class="badge-esgotado">ESGOTADO</span>
-                        <button class="btn-indisponivel" disabled>Indisponível</button>
+                        <img class="img-card" src="${p.imagem}" alt="">
+                        <h4>${p.nome}</h4>
+                        <span class="preco">R$ ${p.preco.toFixed(2)}</span>
+                        <button class="btn-acao">${p.estoque === 0 ?"Item Indisponível" : "Adicionar ao carrinho"}</button> 
                     `;
-                }
-                else if (p.estoque === 1){
-                     card.innerHTML = `
-                        <h2>${p.nome}</h2>
-                        <h3>${p.categoria}</h3>
-                        <p>Preço: R$${p.preco.toFixed(2)}</p>
-                        <span class="badge-disponivel">DISPONÍVEL(${p.estoque} un)</span>
-                        <p>Resta uma unidade</p>
-                    `;
-                }
-                else {
-                    card.innerHTML = `
-                        <h2>${p.nome}</h2>
-                        <h3>${p.categoria}</h3>
-                        <p>Preço: R$${p.preco.toFixed(2)}</p>
-                        <span class="badge-disponivel">DISPONÍVEL (${p.estoque} un)</span>
-                        
-                    `;
-                }
+               
                 container.appendChild(card);
             });
         }
@@ -60,5 +46,5 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             (payload) =>{
                 buscarProdutos();
             }
-        ) 
+        )
         .subscribe();

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Brinquedos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+
+    <header>
+        <div class="topo">
+            <h3>Acesse nosso site</h3>
+        </div>
+        <div class="nav-bar">
+            <button class="btn-header"><span class="material-symbols-outlined">menu</span></button>
+            <a href="#">
+                <div class="logo"><img id="img-logo" src="logo.png" alt="Logo da Happy Kids"></div>
+            </a>
+            <div class="dupla">
+                <button class="btn-header"><span class="material-symbols-outlined">person</span></button>
+                <button class="btn-header"><span class="material-symbols-outlined">shopping_cart</span></button>
+            </div>
+        </div>
+        <div class="buscar">
+            <input type="text" name="" id="campo-lupa"
+            placeholder="Encontre seu brinquedo aqui...">
+            <button class="btn-header" id="lupa"><span class="material-symbols-outlined">search</span></button>
+        </div>
+    </header>
+
+    <section class="categorias">
+        <div class="chips">
+            <button class="chip ativo">Bonecas</button>
+            <button class="chip">Esportes</button>
+            <button class="chip">Tabuleiros</button>
+            <button class="chip">Carrinhos</button>
+            <button class="chip">Pelúcias</button>
+            <button class="chip">Jogos</button>
+            <button class="chip">Barbies</button>
+            <button class="chip">Copa do Mundo</button>
+        </div>
+    </section>
+    <section class="conteudo">
+        <div class="grid-produtos">
+            <div class="card">
+               <img class="img-card" src="logo.png" alt="">
+               <h4>Barbie</h4>
+               <span class="preco">R$100,00</span>
+               <button class="btn-acao">Adicionar ao Carrinho</button>
+            </div>
+            <div class="card">
+               <img class="img-card" src="logo.png" alt="">
+               <h4>Carrinho</h4>
+               <span class="preco">R$150,00</span>
+               <button class="btn-acao">Adicionar ao Carrinho</button>
+            </div>
+            <div class="card">
+               <img class="img-card" src="logo.png" alt="">
+               <h4>Urso</h4>
+               <span class="preco">R$280,00</span>
+               <button class="btn-acao">Adicionar ao Carrinho</button>
+            </div>
+            <div class="card">
+               <img class="img-card" src="logo.png" alt="">
+               <h4>Banco Imobiliário</h4>
+               <span class="preco">R$300,00</span>
+               <button class="btn-acao">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </section>
+
+    <!--<main id="container-produtos" class="grid-produtos">
+        <p>Carregando brinquedos...</p>
+    </main>-->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    </script>
+    <script src="js.j"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+button, a, .btn-header {
+    -webkit-tap-highlight-color: transparent;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.topo{
+    font-family: monospace;
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 5px;
+    background-color: rgb(255, 166, 0);
+    font-size: 0.8rem;
+    color: rgb(255, 255, 255);
+}
+.nav-bar{
+    padding: 5px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.logo{
+    width: 120px;
+    height: 80px;
+}
+#img-logo{
+    width: 100%;
+    height: 100%;
+}
+.btn-header{
+    border: none;
+    background: none;
+    color: rgb(255, 136, 0);
+    cursor: pointer;
+}
+.btn-header .material-symbols-outlined {
+    font-size: 30px; 
+}
+.dupla{
+    display: flex;
+    gap: 25px;
+}
+.buscar{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    border: 1px solid rgba(128, 128, 128, 0.486);
+    padding: 5px 10px;
+
+}
+#campo-lupa{
+    border: none;
+    width: 100%;
+    outline: none;
+}
+#lupa .material-symbols-outlined{
+    font-size: 1.5rem;
+}
+.chips{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    overflow-x: auto;
+}
+.chip{
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid orange;
+    cursor: pointer;
+    white-space: nowrap;
+    color: orange;
+}
+.chip.ativo{
+    color: white;
+    background-color: orange;
+}
+.conteudo{
+    padding: 5px 10px;
+}
+.grid-produtos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 1px 1px 10px #00000041;
+}
+.img-card{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.preco{
+    font-weight: bolder;
+    font-size: 1.1rem;
+}
+.btn-acao{
+    padding: 10px 15px;
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}

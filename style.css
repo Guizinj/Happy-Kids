@@ -84,6 +84,7 @@ header{
     cursor: pointer;
     white-space: nowrap;
     color: orange;
+    background-color: rgb(250, 250, 250);
 }
 .chip.ativo{
     color: white;

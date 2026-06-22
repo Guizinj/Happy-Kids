@@ -15,9 +15,27 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
                 console.log('os produtos chegaram',);
                 renderizar(data);
             }
-        }
-        
+        };
+
         buscarProdutos();
+
+
+        document.querySelector('.chips').addEventListener('click', (event) =>{
+            const clique = event.target.textContent;
+
+            const botoes = document.querySelectorAll('.chip');
+            botoes.forEach(b => {
+                b.classList.remove('ativo');
+            })
+            event.target.classList.add('ativo');
+
+            if(clique === 'Todos'){
+                buscarProdutos();
+            }
+            else{
+            buscarProdutos(clique);
+            }
+        });      
 
         function renderizar (lista){
             const container = document.getElementById('grid');

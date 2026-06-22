@@ -41,6 +41,10 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             const container = document.getElementById('grid');
             container.innerHTML = ''
 
+            if (lista.length === 0) {
+            container.innerHTML = `<p>Nenhum item disponível</p>`;
+            return;
+            }
             lista.forEach(p => {
                 const card = document.createElement('div');
                 card.classList.add('card');

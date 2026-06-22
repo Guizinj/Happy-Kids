@@ -10,9 +10,8 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             const {data, error} = await validacao;
             
             if(error){
-                console.error('deu erro', error);
+                console.error('erro contastado', error);
             } else {
-                console.log('os produtos chegaram',);
                 renderizar(data);
             }
         };

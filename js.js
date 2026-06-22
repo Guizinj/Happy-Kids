@@ -22,10 +22,8 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             const clique = event.target.textContent;
             if (event.target.tagName !== 'BUTTON') return;
 
-            const botoes = document.querySelectorAll('.chip');
-            botoes.forEach(b => {
-                b.classList.remove('ativo');
-            })
+            const botoes = document.querySelectorAll('.chip').forEach(b =>
+            b.classList.remove('ativo'));
             event.target.classList.add('ativo');
 
             if(clique === 'Todos'){
@@ -34,7 +32,7 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             else{
             buscarProdutos(clique);
             }
-        });      
+        });
 
         function renderizar (lista){
             const container = document.getElementById('grid');

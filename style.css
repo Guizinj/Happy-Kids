@@ -133,30 +133,34 @@ header{
 .chips-menu{
     position: absolute;
     top: 100px;
-    left: -200%;
+    left: 0;
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    align-items: start;
+    gap: 12px;
     background-color: white;
     padding-top: 20px;
+    padding-left: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+}
+.chips-menu > h1{
+    color: var(--padrao);
+    font-size: 1.1rem;
 }
 .chips-menu.ativo{
-    left: 0;
+  transform: translateX(0);
 }
 .chip-menu{
     border-radius: 20px;
     padding: 5px;
-    border: 1px solid var(--padrao);
+    border: none;
     cursor: pointer;
     white-space: nowrap;
-    color: var(--padrao);
+    color: rgb(43, 43, 43);
     background-color: rgb(250, 250, 250);
     min-width: 100px;
-}
-.chip-menu.ativo{
-    color: white;
-    background-color: var(--padrao);
+    text-align: left;
 }

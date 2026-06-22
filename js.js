@@ -1,4 +1,5 @@
 const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 'sb_publishable_vgMlqThxJJUydyn1wDQiMA_mF4VqYp8');
+let carrinho = [];
 
         async function buscarProdutos(categoria){
 
@@ -22,7 +23,7 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             const clique = event.target.textContent;
             if (event.target.tagName !== 'BUTTON') return;
 
-            const botoes = document.querySelectorAll('.chip').forEach(b =>
+            document.querySelectorAll('.chip').forEach(b =>
             b.classList.remove('ativo'));
             event.target.classList.add('ativo');
 
@@ -49,7 +50,7 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
                         <img class="img-card" src="${p.imagem}" alt="">
                         <h4>${p.nome}</h4>
                         <span class="preco">R$ ${p.preco.toFixed(2)}</span>
-                        <button class="btn-acao">${p.estoque === 0 ?"Item Indisponível" : "Adicionar ao carrinho"}</button> 
+                        <button class="btn-acao" data-id="${p.id}" ${p.estoque === 0 ? "disabled" : ""}>${p.estoque === 0 ?"Item Indisponível" : "Adicionar ao carrinho"}</button> 
                     `;
                 container.appendChild(card);
             });
@@ -68,7 +69,6 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
 
 
         /* --- MENU --- */
-
         document.getElementById('bar').addEventListener('click', function (){
             const chipsMenu = document.querySelector('.chips-menu');
             const iconeMenu = this.querySelector('.material-symbols-outlined');
@@ -90,10 +90,6 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
         const chipsMenu = document.querySelector('.chips-menu');
         const iconeMenu = document.querySelector('#bar .material-symbols-outlined');
 
-        document.querySelectorAll('.chip-menu').forEach(botao => 
-            botao.classList.remove('ativo')
-        );
-        e.target.classList.add('ativo');
         if (clique === 'Todos') {
             buscarProdutos();
         } else {
@@ -104,3 +100,15 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             iconeMenu.textContent = 'menu'
         }
         });
+
+
+        document.getElementById('grid').addEventListener('click', (event) =>{
+            if(event.target.tagName !== "BUTTON"){
+                console.log('não é botao')
+            }
+            else{
+                console.log('é botao')
+            }
+            const idProduto = event.target.dataset.id;
+            console.log(idProduto)
+        })

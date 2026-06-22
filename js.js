@@ -54,7 +54,6 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
                         <span class="preco">R$ ${p.preco.toFixed(2)}</span>
                         <button class="btn-acao">${p.estoque === 0 ?"Item Indisponível" : "Adicionar ao carrinho"}</button> 
                     `;
-               
                 container.appendChild(card);
             });
         }

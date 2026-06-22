@@ -65,3 +65,40 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             }
         )
         .subscribe();
+
+
+        /*MENU*/
+
+        document.getElementById('bar').addEventListener('click', function (){
+            const chipsMenu = document.querySelector('.chips-menu');
+            const icone = this.querySelector('.material-symbols-outlined');
+            chipsMenu.classList.toggle('ativo');
+
+            if(icone.textContent.trim() === 'menu'){
+                icone.textContent = 'close'
+            }
+            else{
+                icone.textContent = 'menu'
+            }
+        });
+
+        document.querySelector('.chips-menu').addEventListener('click', (e) => {
+            const clique = e.target.textContent;
+            if (e.target.tagName !== 'BUTTON') return;
+
+            document.querySelectorAll('.chip-menu').forEach (botao => 
+            botao.classList.remove('ativo'));
+            e.target.classList.add('ativo');
+
+            if(clique === 'Todos'){
+                buscarProdutos();
+            }
+            else{
+                buscarProdutos(clique);
+            }
+
+            document.querySelectorAll('.chips-menu').forEach (botao => 
+            botao.classList.remove('ativo'));
+
+
+        });

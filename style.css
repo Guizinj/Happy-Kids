@@ -115,7 +115,7 @@ header{
     box-shadow: 1px 1px 10px #00000041;
 }
 .img-card{
-    width: 100%;
+    width: 90%;
     width: 200px;
     object-fit: cover;
 }

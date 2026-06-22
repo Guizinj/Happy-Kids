@@ -18,9 +18,9 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
 
         buscarProdutos();
 
-
         document.querySelector('.chips').addEventListener('click', (event) =>{
             const clique = event.target.textContent;
+            if (event.target.tagName !== 'BUTTON') return;
 
             const botoes = document.querySelectorAll('.chip');
             botoes.forEach(b => {
@@ -57,7 +57,6 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             });
         }
        
-
         banco
         .channel('alteração')
         .on(

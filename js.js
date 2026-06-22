@@ -94,14 +94,13 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
             botao.classList.remove('ativo')
         );
         e.target.classList.add('ativo');
-
         if (clique === 'Todos') {
             buscarProdutos();
         } else {
             buscarProdutos(clique);
         }
-
         chipsMenu.classList.remove('ativo'); 
-        iconeMenu.textContent = 'menu';
-        
+        if(chipsMenu){
+            iconeMenu.textContent = 'menu'
+        }
         });

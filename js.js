@@ -67,38 +67,41 @@ const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 
         .subscribe();
 
 
-        /*MENU*/
+        /* --- MENU --- */
 
         document.getElementById('bar').addEventListener('click', function (){
             const chipsMenu = document.querySelector('.chips-menu');
-            const icone = this.querySelector('.material-symbols-outlined');
+            const iconeMenu = this.querySelector('.material-symbols-outlined');
             chipsMenu.classList.toggle('ativo');
 
-            if(icone.textContent.trim() === 'menu'){
-                icone.textContent = 'close'
+            if(iconeMenu.textContent.trim() === 'menu'){
+                iconeMenu.textContent = 'close'
             }
             else{
-                icone.textContent = 'menu'
+                iconeMenu.textContent = 'menu'
             }
         });
 
+        /* --- CATEGORIAS (CHIPS MENU) --- */
         document.querySelector('.chips-menu').addEventListener('click', (e) => {
-            const clique = e.target.textContent;
-            if (e.target.tagName !== 'BUTTON') return;
+        if (e.target.tagName !== 'BUTTON') return;
+        
+        const clique = e.target.textContent.trim();
+        const chipsMenu = document.querySelector('.chips-menu');
+        const iconeMenu = document.querySelector('#bar .material-symbols-outlined');
 
-            document.querySelectorAll('.chip-menu').forEach (botao => 
-            botao.classList.remove('ativo'));
-            e.target.classList.add('ativo');
+        document.querySelectorAll('.chip-menu').forEach(botao => 
+            botao.classList.remove('ativo')
+        );
+        e.target.classList.add('ativo');
 
-            if(clique === 'Todos'){
-                buscarProdutos();
-            }
-            else{
-                buscarProdutos(clique);
-            }
+        if (clique === 'Todos') {
+            buscarProdutos();
+        } else {
+            buscarProdutos(clique);
+        }
 
-            document.querySelectorAll('.chips-menu').forEach (botao => 
-            botao.classList.remove('ativo'));
-
-
+        chipsMenu.classList.remove('ativo'); 
+        iconeMenu.textContent = 'menu';
+        
         });

@@ -1,5 +1,6 @@
 const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 'sb_publishable_vgMlqThxJJUydyn1wDQiMA_mF4VqYp8');
 let carrinho = [];
+let produtosOn = [];
 
         async function buscarProdutos(categoria){
 
@@ -13,6 +14,7 @@ let carrinho = [];
             if(error){
                 console.error('erro contastado', error);
             } else {
+                produtosOn = data;
                 renderizar(data);
             }
         };
@@ -104,11 +106,23 @@ let carrinho = [];
 
         document.getElementById('grid').addEventListener('click', (event) =>{
             if(event.target.tagName !== "BUTTON"){
-                console.log('não é botao')
+                console.log('não é botao');
+                return;
             }
             else{
                 console.log('é botao')
             }
-            const idProduto = event.target.dataset.id;
-            console.log(idProduto)
+            const idProduto = Number(event.target.dataset.id);
+            const produtoClicado = produtosOn.find(p => p.id === idProduto);
+
+            if(produtoClicado){
+                const verifica = carrinho.find(p => p.id === idProduto);
+                if(verifica){
+                    verifica.quantidade += 1
+                }
+                else{
+                    carrinho.push({...produtoClicado, quantidade: 1});
+                }
+            }
+            console.log(carrinho);
         })

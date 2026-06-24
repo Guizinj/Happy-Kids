@@ -1,5 +1,6 @@
+
 const banco = supabase.createClient('https://thyxhystomblrimokbxi.supabase.co', 'sb_publishable_vgMlqThxJJUydyn1wDQiMA_mF4VqYp8');
-let carrinho = [];
+let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 let produtosOn = [];
 
         async function buscarProdutos(categoria){
@@ -124,5 +125,7 @@ let produtosOn = [];
                     carrinho.push({...produtoClicado, quantidade: 1});
                 }
             }
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
             console.log(carrinho);
         })

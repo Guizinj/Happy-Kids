@@ -126,6 +126,62 @@ let produtosOn = [];
                 }
             }
             localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
+            renderizarCarrinho();
             console.log(carrinho);
+
+            
         })
+
+
+
+
+        /* --- CONTROLE DO PAINEL DO CARRINHO --- */
+        const painelCarrinho = document.getElementById('painel-carrinho');
+        const btnAbrirCarrinho = document.getElementById('btn-carrinho');
+        const btnFecharCarrinho = document.getElementById('fechar-carrinho');
+
+        // Abre o carrinho ao clicar no ícone do header
+        btnAbrirCarrinho.addEventListener('click', () => {
+        painelCarrinho.classList.add('ativo');
+        renderizarCarrinho(); // Atualiza a lista sempre que abre
+        });
+
+        // Fecha o carrinho no botão X
+        btnFecharCarrinho.addEventListener('click', () => {
+        painelCarrinho.classList.remove('ativo');
+        });
+
+        /* --- FUNÇÃO PARA RENDERIZAR OS ITENS DO CARRINHO --- */
+        function renderizarCarrinho() {
+        const containerItens = document.getElementById('itens-carrinho');
+        const campoTotal = document.getElementById('valor-total');
+
+        containerItens.innerHTML = ''; // Limpa o container antigo
+
+        if (carrinho.length === 0) {
+        containerItens.innerHTML = '<p>O carrinho está vazio...</p>';
+        campoTotal.textContent = 'R$ 0,00';
+        return;
+        }
+
+        let totalGeral = 0;
+
+        carrinho.forEach(item => {
+        const subtotal = item.preco * item.quantidade;
+        totalGeral += subtotal;
+
+        const elementoItem = document.createElement('div');
+        elementoItem.classList.add('item-no-carrinho');
+        elementoItem.innerHTML = `
+        <img src="${item.imagem}" alt="${item.nome}">
+        <div style="flex: 1;">
+        <h4>${item.nome}</h4>
+        <small>R$ ${item.preco.toFixed(2)} x ${item.quantidade}</small>
+        </div>
+        <span style="font-weight: bold;">R$ ${subtotal.toFixed(2)}</span>
+        `;
+        containerItens.appendChild(elementoItem);
+        });
+
+        campoTotal.textContent = `R$ ${totalGeral.toFixed(2)}`;
+        }

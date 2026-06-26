@@ -19,7 +19,7 @@
                 <div class="logo"><img id="img-logo" src="logo.png" alt="Logo da Happy Kids"></div>
             </a>
             <div class="dupla">
-                <button class="btn-header"><span class="material-symbols-outlined">shopping_cart</span></button>
+                <button class="btn-header" id="btn-carrinho"><span class="material-symbols-outlined">shopping_cart</span></button>
             </div>
         </div>
         <div class="buscar">
@@ -60,6 +60,26 @@
     <!--<main id="container-produtos" class="grid-produtos">
         <p>Carregando brinquedos...</p>
     </main>-->
+
+
+    <div id="painel-carrinho" class="painel-carrinho">
+    <div class="topo-carrinho">
+        <h2>Seu Carrinho</h2>
+        <button id="fechar-carrinho"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    
+    <div id="itens-carrinho" class="itens-carrinho">
+        <p>O carrinho está vazio...</p>
+    </div>
+
+    <div class="rodape-carrinho">
+        <div class="total">
+            <span>Total:</span>
+            <span id="valor-total">R$ 0,00</span>
+        </div>
+        <button class="btn-finalizar">Finalizar Compra</button>
+    </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
     </script>
